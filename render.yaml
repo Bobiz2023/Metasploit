@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: metasploit-webapp
+    env: docker
+    plan: free
+    autoDeploy: true
+    buildCommand: docker build -t metasploit-webapp .
+    startCommand: docker run -p 8000:8000 metasploit-webapp
+    envVars:
+      - key: DATABASE_URL
+        value: postgres://<username>:<password>@<host>:<port>/<dbname>
